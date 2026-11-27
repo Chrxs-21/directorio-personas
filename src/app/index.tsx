@@ -128,7 +128,15 @@ export default function PublicDirectoryScreen() {
     <SafeAreaView style={styles.safeArea} edges={["top", "left", "right"]}>
       <View style={styles.wrapper}>
         <View style={styles.header}>
-          <Text style={styles.title}>Directorio</Text>
+          <Pressable
+            onLongPress={() => router.push("/admin")}
+            delayLongPress={3000}
+            style={styles.titleTrigger}
+          >
+            <Text style={styles.title} selectable={false}>
+              Directorio
+            </Text>
+          </Pressable>
           <Text style={styles.subtitle}>
             {loading
               ? "Cargando fichas..."
@@ -306,6 +314,9 @@ const styles = StyleSheet.create({
     paddingTop: 16,
     paddingBottom: 12,
     gap: 2,
+  },
+  titleTrigger: {
+    alignSelf: "flex-start",
   },
   title: {
     fontSize: 28,
